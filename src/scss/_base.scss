@@ -1,0 +1,60 @@
+$color-black: #000;
+$color-white: #fff;
+$color-primary: #93cb52;
+$primary-color: slateblue;
+$default-font-size: 1.6rem;
+
+// RESPONSIVE BREAKPOINTS
+
+$bp-lg: 75em; // normal 1200
+$bp-md: 50em; // tablet 800
+$bp-sm: 32em; // phone 500
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+a {
+	text-decoration: none;
+}
+li {
+	list-style: none;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+.container {
+	max-width: 1100px;
+	margin: auto;
+	overflow: hidden;
+	padding: 0 2rem;
+}
+
+//--------------------------------------------------------------------------------------------------------------------
+.categories {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+	grid-gap: 5rem;
+	padding: 1rem 0rem;
+}
+
+.category {
+	color: #333;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	background: #fff;
+	border-radius: 20px;
+	overflow: hidden;
+	img {
+		width: 100%;
+		object-fit: cover;
+	}
+	p {
+		text-align: center;
+		padding: 2rem 0;
+		font-size: 2rem;
+	}
+}
