@@ -1,44 +1,27 @@
+import { categories } from "./data";
 import Category from "./components/Category";
-import Health from "../public/img/health.jpg";
-import Math from "../public/img/math.jpg";
-import Movies from "../public/img/movies.jpg";
-import Music from "../public/img/music.jpg";
-import Politics from "../public/img/politics.jpg";
-import Programming from "../public/img/programming.jpg";
-const categories = [
-	{
-		name: "Health",
-		img: Health,
-	},
-	{
-		name: "Math",
-		img: Math,
-	},
-	{
-		name: "Movies",
-		img: Movies,
-	},
-	{
-		name: "Music",
-		img: Music,
-	},
-	{
-		name: "Politics",
-		img: Politics,
-	},
-	{
-		name: "Programming",
-		img: Programming,
-	},
-];
+
 const app = document.querySelector(".app");
+
+app.addEventListener("click", (e) => {
+	if (e.target.className === "category") {
+		console.log(e.target);
+	}
+});
+
 function App() {
+	const gameEntry = document.createElement("div");
+	const gameEntryTitle = `
+	<h1 class="u-text-center u-mb-2 heading-secondary">Please Select A Quiz Category</h1>
+	`;
+	gameEntry.insertAdjacentHTML("afterbegin", gameEntryTitle);
 	const categoriesDiv = document.createElement("div");
 	categoriesDiv.className = "categories";
 	categories.forEach((cat) => {
 		categoriesDiv.innerHTML += Category(cat.name, cat.img);
 	});
-	app.appendChild(categoriesDiv);
+	gameEntry.appendChild(categoriesDiv);
+	app.appendChild(gameEntry);
 }
 
 export default App;
