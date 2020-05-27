@@ -1,27 +1,29 @@
 import { categories } from "./data";
-import Category from "./components/Category";
-
 const app = document.querySelector(".app");
-
-app.addEventListener("click", (e) => {
-	if (e.target.className === "category") {
-		console.log(e.target);
+class App {
+	constructor(ui) {
+		this.state = {
+			selectedCategory: null,
+		};
+		this.ui = ui;
+		ui.renderGameEntry(categories);
+		this.registerListeners();
 	}
-});
-
-function App() {
-	const gameEntry = document.createElement("div");
-	const gameEntryTitle = `
-	<h1 class="u-text-center u-mb-2 heading-secondary">Please Select A Quiz Category</h1>
-	`;
-	gameEntry.insertAdjacentHTML("afterbegin", gameEntryTitle);
-	const categoriesDiv = document.createElement("div");
-	categoriesDiv.className = "categories";
-	categories.forEach((cat) => {
-		categoriesDiv.innerHTML += Category(cat.name, cat.img);
-	});
-	gameEntry.appendChild(categoriesDiv);
-	app.appendChild(gameEntry);
+	setState(pieceOfState) {
+		const oldState = this.state;
+		const newState = { ...oldState, ...pieceOfState };
+		this.state = newState;
+	}
+	registerListeners() {
+		app.addEventListener("click", (e) => {
+			if (e.target.className.includes("category")) {
+				this.setState({
+					selectedCategory: e.target.getAttribute("id"),
+				});
+				this.ui.renderDifficulty();
+			}
+		});
+	}
 }
 
 export default App;

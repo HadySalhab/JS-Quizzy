@@ -1,4 +1,4 @@
 import "./scss/app.scss";
 import App from "./App";
-
-App();
+import UI from "./ui";
+new App(new UI());

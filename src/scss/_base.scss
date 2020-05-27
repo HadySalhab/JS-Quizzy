@@ -40,14 +40,21 @@ html {
 .u-mb-2 {
 	margin-bottom: 2rem !important;
 }
+.u-block {
+	display: block !important;
+	width: 50% !important;
+	margin: 0 auto !important;
+}
 
-//--------------------------------------------------------------------------------------------------------------------
-.categories {
+.grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
 	grid-gap: 5rem;
 	padding: 1rem 0rem;
+	justify-items: center;
+	margin-bottom: 3rem;
 }
+//--------------------------------------------------------------------------------------------------------------------
 
 .category {
 	color: #333;
@@ -83,3 +90,4 @@ html {
 		opacity: 1;
 	}
 }
+//---------------------------
