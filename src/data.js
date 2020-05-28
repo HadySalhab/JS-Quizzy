@@ -30,4 +30,39 @@ const categories = [
 		img: Programming,
 	},
 ];
-export { categories };
+
+const allQuestions = [
+	{
+		category: "Math",
+		questions: [
+			{
+				question: "3-5*4-1*7 = ?",
+				choices: [-18, -20, -24],
+				answer: -24,
+			},
+			{
+				question: "The number of 3-digit numbers divisible by 6, is",
+				choices: [150, 166, 149],
+				answer: 150,
+			},
+			{
+				question:
+					"Which of the following numbers gives 240 when added to its own square",
+				choices: [16, 15, 17],
+				answer: 15,
+			},
+			{
+				question: "106 × 106 – 94 × 94 = ?",
+				choices: [2400, 2004, 1904],
+				answer: 2400,
+			},
+			{
+				question: "What is 1004 divided by 2?",
+				choices: [502, 520, 5],
+				answer: 502,
+			},
+		],
+	},
+];
+
+export { categories, allQuestions };

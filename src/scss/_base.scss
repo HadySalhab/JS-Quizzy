@@ -45,6 +45,12 @@ html {
 	width: 50% !important;
 	margin: 0 auto !important;
 }
+.u-dis-block {
+	display: block !important;
+}
+.u-mt-2 {
+	margin-top: 2rem !important;
+}
 
 .grid {
 	display: grid;
@@ -91,3 +97,32 @@ html {
 	}
 }
 //---------------------------
+.question {
+	display: block;
+	width: 70%;
+	margin: 0 auto;
+
+	&__field {
+		border: none;
+
+		legend {
+			font-size: 3rem;
+			text-align: center;
+		}
+		label {
+			font-size: 2rem;
+			margin-left: 1rem;
+			&:hover {
+				cursor: pointer;
+			}
+		}
+		input {
+			&:hover {
+				cursor: pointer;
+			}
+		}
+	}
+	&__group {
+		margin-top: 1rem;
+	}
+}

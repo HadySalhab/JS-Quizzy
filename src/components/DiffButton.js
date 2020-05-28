@@ -1,3 +1,3 @@
 const DiffButton = (text, className) =>
-	`<a class="button button-circle button-${className}">${text}</a>`;
+	`<a id="${text}" class="diffBtn button button-circle button-${className}">${text}</a>`;
 export default DiffButton;
