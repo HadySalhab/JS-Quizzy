@@ -138,3 +138,18 @@ html {
 	background-color: #0275d8;
 	color: white;
 }
+//---------------------------------
+.result {
+	text-align: center;
+
+	h1 {
+		font-size: 4rem;
+	}
+	p {
+		font-size: 2rem;
+		margin-bottom: 2rem;
+	}
+	a {
+		display: inline-block;
+	}
+}

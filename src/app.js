@@ -36,6 +36,8 @@ class App {
 				this.evalAnswerAndUpdateQuestion();
 			} else if (e.target.id === "next") {
 				this.showQuestion();
+			} else if (e.target.id === "redo") {
+				this.startTheGame();
 			}
 		});
 	}
@@ -48,6 +50,7 @@ class App {
 			this.setState({
 				questions,
 				score: questions.length,
+				index: 0,
 			});
 
 			this.showQuestion();
@@ -71,7 +74,7 @@ class App {
 		if (selectedChoice) {
 			const { answer, questions, index } = this.state;
 			const value = selectedChoice.value;
-			if (value !== answer) {
+			if (parseInt(value) !== answer) {
 				this.ui.showWrongValue(value);
 				const newScore = this.state.score - 1;
 				this.setState({
@@ -86,6 +89,11 @@ class App {
 					index: newIndex,
 				});
 			} else {
+				this.ui.renderResult(
+					"Quiz Terminated",
+					this.state.score,
+					this.state.questions.length
+				);
 			}
 		} else {
 			this.ui.renderAlert("info", "Please Select An Answer Before Submit!");

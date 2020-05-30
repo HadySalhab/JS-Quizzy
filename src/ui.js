@@ -2,6 +2,7 @@ import GameEntry from "./components/GameEntry";
 import Difficulty from "./components/Difficulty";
 import Question from "./components/Question";
 import Alert from "./components/Alert";
+import Result from "./components/Result";
 class UI {
 	constructor() {
 		this.elements = {
@@ -57,6 +58,12 @@ class UI {
 		submit.setAttribute("id", "next");
 		submit.textContent = "Next";
 		submit.classList.replace("button-action", "button-primary");
+	}
+	renderResult(message, score, totalNumbOfQuestions) {
+		const result = Result(message, score, totalNumbOfQuestions);
+		const { app } = this.elements;
+		app.innerHTML = "";
+		app.insertAdjacentHTML("afterbegin", result);
 	}
 }
 export default UI;
