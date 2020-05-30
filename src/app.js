@@ -1,4 +1,5 @@
 import { categories, allQuestions } from "./data";
+import Timer from "./timer";
 const app = document.querySelector(".app");
 class App {
 	constructor(ui) {
@@ -11,6 +12,7 @@ class App {
 			answer: null,
 			score: 0,
 		};
+		this.timer = null;
 		this.ui = ui;
 		ui.renderGameEntry(categories);
 		this.registerListeners();
@@ -49,13 +51,42 @@ class App {
 			const questions = questionsCategory.questions;
 			this.setState({
 				questions,
-				score: questions.length,
+				score: 0,
 				index: 0,
 			});
 
+			this.showTimer();
 			this.showQuestion();
-		} else {
 		}
+	}
+	showTimer() {
+		const { difficulty } = this.state;
+		let time = 0;
+		if (difficulty === "Hard") {
+			time = 30;
+		} else if (difficulty === "Medium") {
+			time = 45;
+		} else {
+			time = 60;
+		}
+
+		const timerObj = new Timer(time, {
+			onStart: (totalTime) => {
+				this.ui.renderTime(totalTime);
+			},
+			onTick: (timeRemaining) => {
+				this.ui.updateTime(timeRemaining);
+			},
+			onComplete: () => {
+				this.ui.renderResult(
+					"Time Ran Out",
+					this.state.score,
+					this.state.questions.length
+				);
+			},
+		});
+		this.timer = timerObj;
+		timerObj.startTimer();
 	}
 	showQuestion() {
 		const { questions } = this.state;
@@ -74,9 +105,11 @@ class App {
 		if (selectedChoice) {
 			const { answer, questions, index } = this.state;
 			const value = selectedChoice.value;
-			if (parseInt(value) !== answer) {
+			if (value !== answer) {
 				this.ui.showWrongValue(value);
-				const newScore = this.state.score - 1;
+			}
+			if (value === answer) {
+				const newScore = this.state.score + 1;
 				this.setState({
 					score: newScore,
 				});
@@ -94,6 +127,7 @@ class App {
 					this.state.score,
 					this.state.questions.length
 				);
+				this.timer.clearTimer();
 			}
 		} else {
 			this.ui.renderAlert("info", "Please Select An Answer Before Submit!");

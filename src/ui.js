@@ -3,6 +3,7 @@ import Difficulty from "./components/Difficulty";
 import Question from "./components/Question";
 import Alert from "./components/Alert";
 import Result from "./components/Result";
+
 class UI {
 	constructor() {
 		this.elements = {
@@ -24,6 +25,17 @@ class UI {
 		const questionComponent = Question(question, ...choices);
 		app.innerHTML = ``;
 		app.appendChild(questionComponent);
+	}
+	renderTime(time) {
+		const timer = `<p id="timer" class="timer">
+                    ${time}
+									</p>`;
+		document
+			.querySelector(".container")
+			.insertAdjacentHTML("afterbegin", timer);
+	}
+	updateTime(timeRemaining) {
+		document.querySelector(".timer").textContent = timeRemaining;
 	}
 	renderAlert(type, message) {
 		this.clearAlert();
@@ -64,6 +76,7 @@ class UI {
 		const { app } = this.elements;
 		app.innerHTML = "";
 		app.insertAdjacentHTML("afterbegin", result);
+		document.querySelector(".timer").remove();
 	}
 }
 export default UI;

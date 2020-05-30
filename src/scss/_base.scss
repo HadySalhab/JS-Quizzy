@@ -32,6 +32,7 @@ html {
 	margin: auto;
 	overflow: hidden;
 	padding: 0 2rem;
+	position: relative;
 }
 // Utility--------------------------------------------------------------------------------------------------------------------
 .u-text-center {
@@ -101,6 +102,7 @@ html {
 	display: block;
 	width: 70%;
 	margin: 0 auto;
+	position: relative;
 
 	&__field {
 		border: none;
@@ -152,4 +154,13 @@ html {
 	a {
 		display: inline-block;
 	}
+}
+//-------------
+.timer {
+	text-align: end;
+	position: absolute;
+	right: 18%;
+	top: 20%;
+	margin-bottom: 0;
+	font-size: 3rem;
 }
